@@ -1,0 +1,15 @@
+service: teamstallion
+runtime: nodejs22
+instance_class: F1
+
+handlers:
+  - url: /assets
+    static_dir: dist/assets
+
+  - url: /(.*\.(html|json|ico|png|jpg|css|js))
+    static_files: dist/\1
+    upload: dist/(.*\.(html|json|ico|png|jpg|css|js))
+
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
