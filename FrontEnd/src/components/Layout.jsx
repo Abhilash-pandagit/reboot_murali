@@ -40,8 +40,8 @@ export default function Layout({ children, currentView, onNavigate }) {
         {/* Lloyds Technology Centre Brand Header */}
         <div className="p-5 border-b border-emerald-900/60 flex justify-between items-center bg-[#00170F]/80">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#006A3B] via-[#00BA63] to-teal-400 flex items-center justify-center font-black text-lg text-white shadow-lg shadow-emerald-900/50 border border-emerald-400/40">
-              🐎
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-emerald-900/50 border border-emerald-400/40 p-1 overflow-hidden">
+              <img src="/lloyds-horse.png" alt="Lloyds Horse" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -83,12 +83,17 @@ export default function Layout({ children, currentView, onNavigate }) {
         </nav>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-emerald-900/60 bg-[#00170F]/80">
-          <div className="flex items-center gap-2 text-xs text-emerald-300 font-mono font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#00BA63]" />
-            <span>Team Stallion · LTC Hackathon</span>
+        <div className="p-4 border-t border-emerald-900/60 bg-[#00170F]/80 flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-white p-0.5 flex-shrink-0 flex items-center justify-center border border-emerald-400/40">
+            <img src="/lloyds-horse.png" alt="Lloyds Horse" className="w-full h-full object-contain" />
           </div>
-          <p className="text-[10px] text-slate-400 font-mono mt-1">Isolation Forest ML & Canton Ledger</p>
+          <div>
+            <div className="flex items-center gap-1.5 text-xs text-emerald-300 font-mono font-bold">
+              <span className="w-2 h-2 rounded-full bg-[#00BA63]" />
+              <span>Team Stallion</span>
+            </div>
+            <p className="text-[10px] text-slate-400 font-mono mt-0.5">Lloyds Tech Hackathon 2026</p>
+          </div>
         </div>
       </aside>
 
@@ -103,8 +108,8 @@ export default function Layout({ children, currentView, onNavigate }) {
             >
               <Menu size={22} />
             </button>
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/30 text-xs font-mono font-bold text-emerald-300">
-              <span className="w-2 h-2 rounded-full bg-[#00BA63] animate-ping" />
+            <div className="hidden sm:flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/30 text-xs font-mono font-bold text-emerald-300">
+              <img src="/lloyds-horse.png" alt="Lloyds Logo" className="w-4 h-4 object-contain bg-white rounded-full p-0.5" />
               <span>LLOYDS TECHNOLOGY CENTRE HACKATHON 2026 — TEAM STALLION</span>
             </div>
           </div>

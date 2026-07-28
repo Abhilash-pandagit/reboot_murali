@@ -196,9 +196,12 @@ export default function App() {
 
     return (
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100">Decentralized Fraud Defense</h1>
-          <p className="text-xl text-slate-500 dark:text-slate-400 mt-2">Tamper-evident fraud prevention · Consensus-validated audit trail</p>
+        <div className="text-center mb-8 flex flex-col items-center">
+          <div className="w-20 h-20 bg-white rounded-2xl p-2 shadow-2xl border-2 border-emerald-400 mb-4 transform hover:scale-105 transition-transform">
+            <img src="/lloyds-horse.png" alt="Lloyds Technology Centre" className="w-full h-full object-contain" />
+          </div>
+          <h1 className="text-5xl font-black tracking-tight text-white">Decentralized Fraud Defense</h1>
+          <p className="text-xl text-emerald-400 font-semibold mt-2">Lloyds Technology Centre Hackathon 2026 · Team Stallion</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
