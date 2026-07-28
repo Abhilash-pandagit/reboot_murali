@@ -1,0 +1,11 @@
+[Unit]
+Description=Serveo TeamStallion Domain Tunnel
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=30 -R teamstallion:80:localhost:80 serveo.net
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

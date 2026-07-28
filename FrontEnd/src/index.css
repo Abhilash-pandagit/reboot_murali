@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,33 +6,46 @@
 
 @layer base {
   body {
-    @apply bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased transition-colors duration-200;
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    @apply bg-[#00140D] text-slate-100 antialiased transition-colors duration-200;
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
   }
   
-  html.dark body {
-    font-family: 'Outfit', 'Segoe UI', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
   }
 }
 
+/* Custom Lloyds Technology Centre Color Palette Utility Classes */
+.bg-lloyds-dark {
+  background-color: #001A10;
+}
+
+.bg-lloyds-forest {
+  background-color: #004B28;
+}
+
+.bg-lloyds-green {
+  background-color: #006A3B;
+}
+
+.bg-lloyds-accent {
+  background-color: #00BA63;
+}
+
+.text-lloyds-accent {
+  color: #00BA63;
+}
+
+.border-lloyds-accent {
+  border-color: #00BA63;
+}
+
 @layer components {
-  .card {
-    @apply bg-gray-900 border border-gray-800 rounded-xl p-5;
+  .lloyds-card {
+    @apply bg-[#002417]/80 backdrop-blur-xl border border-emerald-600/30 rounded-2xl p-6 shadow-xl;
   }
-  .btn-primary {
-    @apply bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors;
-  }
-  .btn-danger {
-    @apply bg-danger-500 hover:bg-danger-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors;
-  }
-  .badge-success {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-success-50 text-success-700;
-  }
-  .badge-warning {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-warning-50 text-warning-700;
-  }
-  .badge-danger {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-danger-50 text-danger-700;
+  .btn-lloyds {
+    @apply bg-gradient-to-r from-[#006A3B] to-[#00BA63] hover:from-[#005A30] hover:to-[#00A352] text-white font-bold px-5 py-2.5 rounded-xl shadow-lg transition-all active:scale-[0.98];
   }
 }
 
@@ -46,9 +58,9 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+    @apply bg-emerald-900/60 rounded-full;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-400 dark:bg-slate-600;
+    @apply bg-emerald-700;
   }
 }
