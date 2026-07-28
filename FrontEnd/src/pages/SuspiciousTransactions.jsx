@@ -157,11 +157,14 @@ export default function SuspiciousTransactions() {
                           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1">Transaction IDs</span>
                           {Array.isArray(txnIds) && txnIds.length > 0 ? (
                             <div className="flex flex-wrap gap-1.5">
-                              {txnIds.map((id) => (
-                                <span key={id} className="px-2 py-0.5 rounded bg-slate-800 text-rose-300 border border-slate-700 font-mono text-[11px]">
-                                  {id}
-                                </span>
-                              ))}
+                              {txnIds.map((id, idIdx) => {
+                                const idStr = typeof id === 'string' ? id : (id?.txnId || id?.id || String(idIdx));
+                                return (
+                                  <span key={idStr + idIdx} className="px-2 py-0.5 rounded bg-slate-800 text-rose-300 border border-slate-700 font-mono text-[11px]">
+                                    {(idStr || '').substring(0, 20)}
+                                  </span>
+                                );
+                              })}
                             </div>
                           ) : (
                             <span className="text-xs text-slate-400 font-mono">TXN-ISOLATION-VECTOR-FLAG</span>

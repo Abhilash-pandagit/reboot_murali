@@ -20,9 +20,11 @@ export default function RadarChart({
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
 
+  const safeFeatures = Array.isArray(features) && features.length > 0 ? features : DEFAULT_FEATURES;
+
   const center = size / 2;
   const radius = (size / 2) - 55;
-  const totalAxes = features.length;
+  const totalAxes = safeFeatures.length;
   const angleSlice = (Math.PI * 2) / totalAxes;
 
   // Concentric levels (20%, 40%, 60%, 80%, 100%)
@@ -31,7 +33,8 @@ export default function RadarChart({
   // Helper to calculate (x, y) for a value (0.0 to 1.0) along axis i
   const getCoordinates = (i, val) => {
     const angle = i * angleSlice - Math.PI / 2;
-    const r = radius * Math.min(1.0, Math.max(0.0, val));
+    const numericVal = typeof val === 'number' && !isNaN(val) ? val : 0;
+    const r = radius * Math.min(1.0, Math.max(0.0, numericVal));
     return {
       x: center + r * Math.cos(angle),
       y: center + r * Math.sin(angle),
@@ -39,9 +42,9 @@ export default function RadarChart({
   };
 
   // Build polygon points string for dataset
-  const polygonPoints = features
+  const polygonPoints = safeFeatures
     .map((f, i) => {
-      const { x, y } = getCoordinates(i, f.value);
+      const { x, y } = getCoordinates(i, f?.value ?? 0);
       return `${x},${y}`;
     })
     .join(' ');
@@ -95,7 +98,7 @@ export default function RadarChart({
 
           {/* Concentric grid lines (Web) */}
           {levels.map((lvl, lIdx) => {
-            const gridPoints = features
+            const gridPoints = safeFeatures
               .map((_, i) => {
                 const { x, y } = getCoordinates(i, lvl);
                 return `${x},${y}`;
@@ -116,7 +119,7 @@ export default function RadarChart({
           })}
 
           {/* Axis spokes and labels */}
-          {features.map((f, i) => {
+          {safeFeatures.map((f, i) => {
             const endCoord = getCoordinates(i, 1.0);
             const labelCoord = getCoordinates(i, 1.18);
             const isHovered = hoveredIdx === i;
@@ -146,7 +149,7 @@ export default function RadarChart({
                       : 'fill-slate-400 font-medium'
                   }`}
                 >
-                  {f.name}
+                  {f?.name || `Axis ${i + 1}`}
                 </text>
               </g>
             );
@@ -163,8 +166,8 @@ export default function RadarChart({
           />
 
           {/* Data Points / Handles */}
-          {features.map((f, i) => {
-            const { x, y } = getCoordinates(i, f.value);
+          {safeFeatures.map((f, i) => {
+            const { x, y } = getCoordinates(i, f?.value ?? 0);
             const isHovered = hoveredIdx === i;
 
             return (
@@ -188,13 +191,13 @@ export default function RadarChart({
 
       {/* Tooltip / Active Feature Detail */}
       <div className="mt-3 bg-slate-900/80 rounded-xl p-3 border border-slate-800 text-xs flex items-center justify-between font-mono">
-        {hoveredIdx !== null ? (
+        {hoveredIdx !== null && safeFeatures[hoveredIdx] ? (
           <>
             <span className="text-emerald-400 font-bold">
-              📍 {features[hoveredIdx].name}:
+              📍 {safeFeatures[hoveredIdx].name || 'Feature'}:
             </span>
             <span className="text-white font-bold bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
-              {(features[hoveredIdx].value * 100).toFixed(1)}% Anomaly Index
+              {((safeFeatures[hoveredIdx].value ?? 0) * 100).toFixed(1)}% Anomaly Index
             </span>
           </>
         ) : (
