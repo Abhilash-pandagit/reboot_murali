@@ -176,7 +176,7 @@ export default function BlockDetailsModal({ block, chainName, onClose }) {
                             <div className="flex items-start justify-between mb-2">
                               <p className="text-[11px] font-bold text-slate-700 dark:text-slate-300">TX #{index}</p>
                               <span className="text-[10px] px-2 py-0.5 rounded bg-cyan-100 dark:bg-cyan-900/60 text-cyan-700 dark:text-cyan-300 font-semibold">
-                                {leaf.txnId.substring(0, 8)}...
+                                {(leaf.txnId || '').substring(0, 8)}...
                               </span>
                             </div>
 

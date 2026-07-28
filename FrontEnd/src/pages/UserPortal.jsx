@@ -1207,7 +1207,7 @@ export default function UserPortal({ userId }) {
                           </div>
                           <div className="flex justify-between items-center pb-3 border-b border-slate-100 dark:border-slate-800">
                             <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px]">Transaction ID</p>
-                            <p className="font-mono text-[10px] font-bold text-slate-700 dark:text-slate-300">{transactionResponse.txnId.substring(0, 16)}...</p>
+                            <p className="font-mono text-[10px] font-bold text-slate-700 dark:text-slate-300">{(transactionResponse?.txnId || '').substring(0, 16)}...</p>
                           </div>
                           <div className="flex justify-between items-center">
                             <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-[10px]">Status</p>
@@ -1366,7 +1366,7 @@ export default function UserPortal({ userId }) {
                         </p>
                         <p className="text-lg font-bold text-indigo-600">£{txn.amount}</p>
                       </div>
-                      <p className="font-mono text-xs text-slate-600 dark:text-slate-400 break-all">{(txn.id || txn.txnId).substring(0, 20)}...</p>
+                      <p className="font-mono text-xs text-slate-600 dark:text-slate-400 break-all">{((txn && (txn.id || txn.txnId)) || '').substring(0, 20)}...</p>
                       <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-200 dark:border-slate-700">
                         <div>
                           <p className="text-xs text-slate-500 dark:text-slate-500 uppercase tracking-wider font-semibold">From</p>
