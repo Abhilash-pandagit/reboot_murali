@@ -1,0 +1,11 @@
+[Unit]
+Description=TeamStallion LocalTunnel Domain
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/lt --port 80 --subdomain teamstallion1
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
