@@ -195,15 +195,15 @@ export default function App() {
     }
 
     return (
-      <div className="max-w-6xl mx-auto">
-        {/* PPT Slide Header Style */}
+      <div className="max-w-5xl mx-auto">
+        {/* Header with PPT Slide Styling & Top-Right Rearing Horse Logo */}
         <div className="mb-8 flex justify-between items-start border-b border-slate-300 pb-4">
           <div>
             <h1 className="text-4xl font-extrabold text-[#111827] tracking-tight">
-              FraudShield Engine: <span className="font-normal text-slate-700">problem we are solving</span>
+              Decentralized Fraud Defense Engine
             </h1>
-            <p className="text-sm font-semibold text-slate-500 mt-1">
-              Team Stallion Project — from manual fraud review to governed, traceable ledger analysis
+            <p className="text-base font-semibold text-slate-600 mt-1">
+              Lloyds Technology Centre Hackathon 2026 · Team Stallion
             </p>
           </div>
           <div className="w-14 h-14 bg-white rounded-xl p-1 shadow-sm border border-slate-200 flex-shrink-0">
@@ -211,93 +211,59 @@ export default function App() {
           </div>
         </div>
 
-        {/* 3 Pillar Cards matching PPT Slide Aesthetics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* Feature Cards using PPT Color Combination (Medium Emerald & Deep Forest) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           
-          {/* Pillar 1: Today's pain points (Light Mint Green) */}
-          <div className="bg-[#A3E3AB] text-[#082914] rounded-2xl p-6 shadow-md border border-[#8CD896] flex flex-col justify-between">
-            <div>
-              <h2 className="text-2xl font-black mb-6 text-[#082914] tracking-tight text-center border-b border-[#8CD896] pb-3">
-                Today's pain points
-              </h2>
-              <ul className="space-y-4 text-sm font-bold leading-relaxed">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#082914] text-lg font-black">•</span>
-                  <span>Fraud detection relies on isolated database silos with manual document reviews.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#082914] text-lg font-black">•</span>
-                  <span>The inherited POC is developer-oriented and not production-ready against MLOps patterns.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#082914] text-lg font-black">•</span>
-                  <span>Traditional RAG options add embedding, vector-index, and credential-management overhead.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#082914] text-lg font-black">•</span>
-                  <span>Regulated use cases need evidence that is explainable, replayable, and source-cited.</span>
-                </li>
-              </ul>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[#8CD896] text-xs font-black uppercase text-[#082914]/80 tracking-widest text-center">
-              Legacy Limitations
-            </div>
+          {/* Card 1: Blockchain Integration (Deep Dark Forest Green) */}
+          <div className="bg-[#0B3820] text-[#E2F7E8] rounded-2xl p-6 shadow-md border border-[#072914]">
+            <h3 className="text-xl font-bold text-[#E2F7E8] mb-3 flex items-center gap-2">
+              <span className="text-[#00A865]">⛓️</span> DAML Canton Ledger Integration
+            </h3>
+            <p className="text-sm text-[#D1EAD0] mb-4 leading-relaxed">
+              FraudShield leverages a privacy-enabled decentralized ledger to ensure every payment is permanently recorded and immune to operational record tampering.
+            </p>
+            <ul className="space-y-2.5 text-sm text-[#D1EAD0] font-medium">
+              <li className="flex items-start gap-2">
+                <span className="text-[#00A865] font-bold">✓</span>
+                <span><strong>Consensus Validated:</strong> Distributed Canton nodes verify multi-bank payments.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00A865] font-bold">✓</span>
+                <span><strong>Immutable Audit Trail:</strong> Cryptographic Merkle tree hashes prevent retro-active changes.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#00A865] font-bold">✓</span>
+                <span><strong>Smart Contracts:</strong> Automated hold & consent contracts for high-risk transfers.</span>
+              </li>
+            </ul>
           </div>
 
-          {/* Pillar 2: What CIB needs (Medium Vibrant Emerald Green) */}
-          <div className="bg-[#00A865] text-[#031D0E] rounded-2xl p-6 shadow-md border border-[#00965A] flex flex-col justify-between">
-            <div>
-              <h2 className="text-2xl font-black mb-6 text-[#031D0E] tracking-tight text-center border-b border-[#00965A] pb-3">
-                What CIB needs
-              </h2>
-              <ul className="space-y-4 text-sm font-bold leading-relaxed text-[#031D0E]">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#031D0E] text-lg font-black">•</span>
-                  <span>A lightweight way to ask questions across several payment audit records.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#031D0E] text-lg font-black">•</span>
-                  <span>Clear source references: DAML contract ID, Merkle root, block index, and retrieved evidence.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#031D0E] text-lg font-black">•</span>
-                  <span>A path that aligns with approved enterprise LLM access (NVIDIA Nemotron RAG) & governance.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#031D0E] text-lg font-black">•</span>
-                  <span>A demonstrable pattern that shows value before committing to heavier infrastructure.</span>
-                </li>
-              </ul>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[#00965A] text-xs font-black uppercase text-[#031D0E]/80 tracking-widest text-center">
-              Target Requirements
-            </div>
-          </div>
-
-          {/* Pillar 3: Show & Tell message (Deep Dark Forest Green) */}
-          <div className="bg-[#0B3820] text-[#E2F7E8] rounded-2xl p-6 shadow-md border border-[#072914] flex flex-col justify-between">
-            <div>
-              <h2 className="text-2xl font-black mb-6 text-[#E2F7E8] tracking-tight text-center border-b border-[#144A2C] pb-3">
-                Show & Tell message
-              </h2>
-              <ul className="space-y-4 text-sm font-semibold leading-relaxed text-[#D1EAD0]">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#00A865] text-lg font-black">•</span>
-                  <span>FraudShield is not only about generating a report; it makes payment validation faster and defensible.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#00A865] text-lg font-black">•</span>
-                  <span>The proposed approach focuses on retrieval transparency rather than black-box vector opacity.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#00A865] text-lg font-black">•</span>
-                  <span>The live demo shows grounded answers with complete DAML Canton ledger traceability.</span>
-                </li>
-              </ul>
-            </div>
-            <div className="mt-6 pt-4 border-t border-[#144A2C] text-xs font-bold uppercase text-[#A3E3AB] tracking-widest text-center">
-              FraudShield Value Proposition
-            </div>
+          {/* Card 2: Quick Navigation & Platform Overview (Medium Emerald Green) */}
+          <div className="bg-[#00A865] text-[#031D0E] rounded-2xl p-6 shadow-md border border-[#00965A]">
+            <h3 className="text-xl font-bold text-[#031D0E] mb-3 flex items-center gap-2">
+              <span className="text-[#031D0E]">🚀</span> Platform Quick Navigation
+            </h3>
+            <p className="text-sm font-semibold text-[#031D0E]/90 mb-3">
+              Use the left sidebar navigation to access all live modules:
+            </p>
+            <ul className="space-y-3 text-sm font-bold text-[#031D0E]">
+              <li className="flex items-center gap-2 bg-white/20 p-2 rounded-xl">
+                <span>💳</span>
+                <span><strong>User Portal:</strong> Send payments & view account balances</span>
+              </li>
+              <li className="flex items-center gap-2 bg-white/20 p-2 rounded-xl">
+                <span>👮‍♂️</span>
+                <span><strong>Admin Console:</strong> Review & approve pending transaction holds</span>
+              </li>
+              <li className="flex items-center gap-2 bg-white/20 p-2 rounded-xl">
+                <span>🔎</span>
+                <span><strong>Chain Explorer:</strong> Inspect Merkle root proofs & ledger state</span>
+              </li>
+              <li className="flex items-center gap-2 bg-white/20 p-2 rounded-xl">
+                <span>⚠️</span>
+                <span><strong>Suspicious Txns:</strong> Monitor 8D Isolation Forest radar risk vectors</span>
+              </li>
+            </ul>
           </div>
 
         </div>
