@@ -136,12 +136,13 @@ public class NvidiaNimChatService {
             requestBody.put("top_p", 0.95);
             requestBody.put("stream", false);
 
-            JsonNode responseNode = nimRestClient.post()
+            org.springframework.http.ResponseEntity<String> responseEntity = nimRestClient.post()
                     .body(requestBody)
                     .retrieve()
-                    .body(JsonNode.class);
+                    .toEntity(String.class);
 
-            if (responseNode != null) {
+            if (responseEntity != null && responseEntity.getBody() != null) {
+                JsonNode responseNode = objectMapper.readTree(responseEntity.getBody());
                 String assistantResponse = "";
                 JsonNode choicesNode = responseNode.path("choices");
                 if (choicesNode.isArray() && choicesNode.size() > 0) {
@@ -158,6 +159,7 @@ public class NvidiaNimChatService {
                     return result;
                 }
             }
+
         } catch (Exception e) {
             log.warn("[AI Chat Service] Cloud NVIDIA NIM API call failed ({}), falling back to 100 Q&A Index...", e.getMessage());
         }
@@ -390,9 +392,10 @@ public class NvidiaNimChatService {
             List.of("risk score formula", "total risk score", "risk calculation"),
             "$\\text{Total Risk Score} = \\text{Min}\\left(100, \\sum \\text{Rule Points} + \\text{ML Points}\\right)$.");
 
-        addQ(37, "What are the score boundaries for LOW RISK tier?",
-            List.of("low risk boundaries", "0-39", "low risk score"),
-            "Score range **0 to 39**.");
+        addQ(37, "What are the 3 risk tiers and score boundaries in FraudShield?",
+            List.of("risk tier", "risk tiers", "tier", "tiers", "low risk", "medium risk", "high risk", "risk level", "0-39", "40-69", "70-100"),
+            "FraudShield categorizes all payment transactions into **3 distinct Risk Tiers** based on total calculated risk score (0-100):\n1. **LOW RISK (0–39 points)**: `AUTO_APPROVE` — Instant direct settlement.\n2. **MEDIUM RISK (40–69 points)**: `ADMIN_REVIEW` — Routed to `PENDING_ADMIN` review queue with Canton hold contract.\n3. **HIGH RISK (70–100 points)**: `CONSENT_REQUIRED` — Requires 15-second sender consent confirmation, escalating to bank admin if declined or timed out.");
+
 
         addQ(38, "What action is taken for LOW RISK transactions?",
             List.of("low risk action", "auto_approve", "low risk direct"),
