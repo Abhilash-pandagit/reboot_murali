@@ -13,7 +13,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
     private final FraudShieldWebSocketHandler handler;
 
-    @Value("${app.cors.allowed-origin-patterns:http://localhost:*,http://127.0.0.1:*}")
+    @Value("${app.cors.allowed-origin-patterns:*}")
     private String allowedOriginPatterns;
 
     public WebSocketConfig(FraudShieldWebSocketHandler handler) {

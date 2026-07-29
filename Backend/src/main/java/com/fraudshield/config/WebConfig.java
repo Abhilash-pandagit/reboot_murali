@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Value("${app.cors.allowed-origin-patterns:http://localhost:*,http://127.0.0.1:*}")
+    @Value("${app.cors.allowed-origin-patterns:*}")
     private String allowedOriginPatterns;
 
     @Override
@@ -17,9 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
             .allowedOriginPatterns(parseAllowedOriginPatterns())
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .allowCredentials(true)
                 .maxAge(3600);
     }
+
 
     private String[] parseAllowedOriginPatterns() {
         return allowedOriginPatterns.split("\\s*,\\s*");
