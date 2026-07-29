@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Moon, Sun, Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 export default function Layout({ children, currentView, onNavigate }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' ||
-        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    }
-    return true;
-  });
-
-  useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDarkMode) {
-      root.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      root.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  }, [isDarkMode]);
 
   const navItems = [
     { id: 'home', icon: '🏠', label: 'Home', view: 'home' },
@@ -31,29 +13,26 @@ export default function Layout({ children, currentView, onNavigate }) {
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-[#00140D] text-slate-100 transition-colors duration-200 font-sans selection:bg-[#00BA63] selection:text-white">
-      {/* Left Sidebar Navigation */}
+    <div className="flex h-screen overflow-hidden bg-[#ECEEEF] text-[#111827] transition-colors duration-200 font-sans selection:bg-[#00A865] selection:text-white">
+      {/* Left Sidebar Navigation - PPT Deep Forest Theme */}
       <aside className={`
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full hidden lg:flex lg:w-0 lg:overflow-hidden'} 
-        w-64 bg-[#001F15]/95 backdrop-blur-2xl border-r border-emerald-900/60 shadow-2xl flex flex-col transition-all duration-300 z-50 fixed lg:relative h-full
+        w-64 bg-[#0B3820] text-white shadow-2xl flex flex-col transition-all duration-300 z-50 fixed lg:relative h-full border-r border-[#072914]
       `}>
-        {/* Lloyds Technology Centre Brand Header */}
-        <div className="p-5 border-b border-emerald-900/60 flex justify-between items-center bg-[#00170F]/80">
+        {/* Sidebar Brand Header */}
+        <div className="p-5 border-b border-[#144A2C] flex justify-between items-center bg-[#072914]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg shadow-emerald-900/50 border border-emerald-400/40 p-1 overflow-hidden">
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-md p-1 overflow-hidden border border-[#00A865]">
               <img src="/lloyds-horse.png" alt="Lloyds Horse" className="w-full h-full object-contain" />
             </div>
             <div>
-              <div className="flex items-center gap-1.5">
-                <h1 className="text-base font-black text-white tracking-tight">FraudShield</h1>
-                <span className="w-2 h-2 rounded-full bg-[#00BA63] animate-pulse" />
-              </div>
-              <p className="text-[9px] text-[#00BA63] font-mono uppercase tracking-widest font-black mt-0.5">
+              <h1 className="text-base font-black text-white tracking-tight leading-none">FraudShield</h1>
+              <p className="text-[9px] text-[#A3E3AB] font-mono uppercase tracking-widest font-black mt-1">
                 LLOYDS TECH CENTRE
               </p>
             </div>
           </div>
-          <button className="lg:hidden text-slate-400 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
+          <button className="lg:hidden text-slate-300 hover:text-white" onClick={() => setIsSidebarOpen(false)}>
             <X size={22} />
           </button>
         </div>
@@ -71,8 +50,8 @@ export default function Layout({ children, currentView, onNavigate }) {
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-extrabold transition-all text-sm ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#006A3B]/60 via-[#00BA63]/20 to-transparent text-[#00BA63] border border-[#00BA63]/50 shadow-[0_0_20px_rgba(0,186,99,0.2)]'
-                    : 'text-slate-300 hover:bg-emerald-950/60 hover:text-white border border-transparent'
+                    ? 'bg-[#00A865] text-white shadow-lg border border-[#A3E3AB]/40'
+                    : 'text-[#A3E3AB] hover:bg-[#072914] hover:text-white border border-transparent'
                 }`}
               >
                 <span className="text-xl">{item.icon}</span>
@@ -83,45 +62,44 @@ export default function Layout({ children, currentView, onNavigate }) {
         </nav>
 
         {/* Sidebar Footer */}
-        <div className="p-4 border-t border-emerald-900/60 bg-[#00170F]/80 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-white p-0.5 flex-shrink-0 flex items-center justify-center border border-emerald-400/40">
+        <div className="p-4 border-t border-[#144A2C] bg-[#072914] flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-white p-0.5 flex-shrink-0 flex items-center justify-center border border-[#00A865]">
             <img src="/lloyds-horse.png" alt="Lloyds Horse" className="w-full h-full object-contain" />
           </div>
           <div>
-            <div className="flex items-center gap-1.5 text-xs text-emerald-300 font-mono font-bold">
-              <span className="w-2 h-2 rounded-full bg-[#00BA63]" />
+            <div className="flex items-center gap-1.5 text-xs text-[#A3E3AB] font-mono font-bold">
+              <span className="w-2 h-2 rounded-full bg-[#00A865]" />
               <span>Team Stallion</span>
             </div>
-            <p className="text-[10px] text-slate-400 font-mono mt-0.5">Lloyds Tech Hackathon 2026</p>
+            <p className="text-[10px] text-slate-300 font-mono mt-0.5">LTC Hackathon 2026</p>
           </div>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden relative">
-        {/* Top Navbar */}
-        <header className="h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8 border-b border-emerald-900/60 bg-[#001A10]/90 backdrop-blur-xl shadow-md z-40">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden relative bg-[#ECEEEF]">
+        {/* Top Navbar - PPT Slide Title Header Style */}
+        <header className="h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8 border-b border-slate-300/80 bg-white/90 backdrop-blur-md shadow-sm z-40">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="text-slate-300 hover:text-white focus:outline-none p-1.5 rounded-lg hover:bg-emerald-900/40 transition-colors"
+              className="text-slate-700 hover:text-black focus:outline-none p-1.5 rounded-lg hover:bg-slate-200 transition-colors"
             >
               <Menu size={22} />
             </button>
-            <div className="hidden sm:flex items-center gap-2.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-600/30 text-xs font-mono font-bold text-emerald-300">
-              <img src="/lloyds-horse.png" alt="Lloyds Logo" className="w-4 h-4 object-contain bg-white rounded-full p-0.5" />
-              <span>LLOYDS TECHNOLOGY CENTRE HACKATHON 2026 — TEAM STALLION</span>
+            <div>
+              <span className="text-xs font-mono font-bold text-[#00A865] uppercase tracking-widest">
+                LLOYDS TECHNOLOGY CENTRE HACKATHON 2026 — TEAM STALLION
+              </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-emerald-900/50 border border-emerald-800/60 transition-all flex items-center gap-2 text-xs font-mono font-bold"
-            >
-              {isDarkMode ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-emerald-400" />}
-              <span className="hidden md:inline">{isDarkMode ? 'Lloyds Emerald' : 'Light Mode'}</span>
-            </button>
+          {/* Top Right Horse Logo exactly as in PPT Slide */}
+          <div className="flex items-center gap-3">
+            <span className="hidden sm:inline-block text-xs font-bold text-slate-600">FraudShield Active</span>
+            <div className="w-10 h-10 bg-white rounded-lg p-1 border border-slate-200 shadow-sm flex items-center justify-center">
+              <img src="/lloyds-horse.png" alt="Lloyds Rearing Horse" className="w-full h-full object-contain" />
+            </div>
           </div>
         </header>
 
@@ -135,7 +113,7 @@ export default function Layout({ children, currentView, onNavigate }) {
       {/* Mobile Overlay */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-[#00100A]/80 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}

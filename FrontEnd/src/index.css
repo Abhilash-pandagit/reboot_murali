@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,8 +6,8 @@
 
 @layer base {
   body {
-    @apply bg-[#00140D] text-slate-100 antialiased transition-colors duration-200;
-    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    @apply bg-[#ECEEEF] text-[#111827] antialiased transition-colors duration-200;
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -15,37 +15,43 @@
   }
 }
 
-/* Custom Lloyds Technology Centre Color Palette Utility Classes */
-.bg-lloyds-dark {
-  background-color: #001A10;
+/* Exact PPT Slide Color Tokens */
+.bg-ppt-canvas {
+  background-color: #ECEEEF;
 }
 
-.bg-lloyds-forest {
-  background-color: #004B28;
+.bg-ppt-light-green {
+  background-color: #A3E3AB;
 }
 
-.bg-lloyds-green {
-  background-color: #006A3B;
+.bg-ppt-medium-green {
+  background-color: #00A865;
 }
 
-.bg-lloyds-accent {
-  background-color: #00BA63;
+.bg-ppt-dark-forest {
+  background-color: #0B3820;
 }
 
-.text-lloyds-accent {
-  color: #00BA63;
+.text-ppt-dark {
+  color: #082914;
 }
 
-.border-lloyds-accent {
-  border-color: #00BA63;
+.text-ppt-light {
+  color: #E2F7E8;
 }
 
 @layer components {
-  .lloyds-card {
-    @apply bg-[#002417]/80 backdrop-blur-xl border border-emerald-600/30 rounded-2xl p-6 shadow-xl;
+  .ppt-pillar-light {
+    @apply bg-[#A3E3AB] text-[#082914] rounded-2xl p-6 shadow-md border border-[#8CD896] transition-all hover:shadow-xl;
   }
-  .btn-lloyds {
-    @apply bg-gradient-to-r from-[#006A3B] to-[#00BA63] hover:from-[#005A30] hover:to-[#00A352] text-white font-bold px-5 py-2.5 rounded-xl shadow-lg transition-all active:scale-[0.98];
+  .ppt-pillar-medium {
+    @apply bg-[#00A865] text-[#031D0E] rounded-2xl p-6 shadow-md border border-[#00965A] transition-all hover:shadow-xl;
+  }
+  .ppt-pillar-dark {
+    @apply bg-[#0B3820] text-[#E2F7E8] rounded-2xl p-6 shadow-md border border-[#072914] transition-all hover:shadow-xl;
+  }
+  .btn-lloyds-ppt {
+    @apply bg-[#00A865] hover:bg-[#00915A] text-white font-bold px-5 py-2.5 rounded-xl shadow-md transition-all active:scale-[0.98];
   }
 }
 
@@ -58,9 +64,9 @@
     background: transparent;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-emerald-900/60 rounded-full;
+    @apply bg-slate-400 rounded-full;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    @apply bg-emerald-700;
+    @apply bg-slate-500;
   }
 }
